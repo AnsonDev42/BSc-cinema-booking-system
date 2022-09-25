@@ -1,0 +1,23 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+ <link rel="stylesheet" type="text/css" href="{% static 'movies/main.css' %}">
+
+    <title>CINEMA NAME</title>
+  </head>
+  <body>
+          {% block content %}
+
+          {% endblock %}
+  </body>
+</html>
+
+

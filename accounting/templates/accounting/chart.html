@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <!--Load the AJAX API-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawDualY);
+
+    function drawDualY() {
+      var data = google.visualization.arrayToDataTable([
+        ['Date', 'Revenue'],
+        {% for d in data %}{{ d | safe }},
+        {% endfor %}
+      ]);
+
+      var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+      materialChart.draw(data);
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Revenue from {{ start_date }} to {{ end_date }}</h1>
+  <form action="/accounting" method="POST">
+    {% csrf_token %}
+    <input type="date" required name="start_date"></input>
+    <input type="date" required name="end_date"></input>
+    <input type="submit" value="Submit">
+  </form>
+  <!--Div that will hold the pie chart-->
+  <div id="chart_div"></div>
+  <h1>Overall income ${{ overall_income }}</h1>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+{% extends 'payment/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card border-0 my-5"> <!-- display card formatting-->
+      <div class="card-body p-15">
+            <h1>Basket</h1>
+            {% for ticket in tickets.all %}
+            <h5>
+            <ul>
+                <li>{{ ticket }} - {{ ticket.showtime }}<br></li>
+            </ul>
+        </h5>
+            {% endfor %}
+            <h2>Amount: {{ amount }}</h2>
+            <a href="/checkout">checkout</a>
+{% endblock %}

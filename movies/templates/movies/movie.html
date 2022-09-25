@@ -1,0 +1,63 @@
+{% extends 'movies/base.html' %} {% block content %} {% load static %}
+<p>This is movie info page </p>
+
+
+
+
+
+
+<!--
+<button type="button" class="btn btn-outline-success">{{ movie.title }}</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <img width="600px" height="100%" src="{% static 'movies/' %}{{ movie.id }}.jpg">
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- this is the movie info context, if it exits-->
+                    {% if movie %}
+                    <h1>{{ movie.title }}</h1>
+                    <h6>{{ movie.certificate }}</h6>
+                    <p>{{ movie.blurb}}</p>
+
+                    <hr class="rounded">
+
+                    <h6>Rated: {{ movie.rating }}/10</h6>
+
+                    <hr class="rounded">
+
+                    <h5>Director:</h5>
+                    {{ movie.director }}
+                    <h5>Lead Actors:</h5>
+                    {{ movie.lead_actor }}
+                    <h5>Duration:</h5>
+                    {{ movie.duration }} minutes
+                    <h5>Premier Date:</h5>
+                    {{ movie.premier_date }} {% else %}
+                    <p>No movies found.</p>
+                    {% endif %}
+                </div>
+                <div class="col-lg-12">
+                    <!-- this is the datetime_form passed into html -->
+                    <form action="" method="post">
+                        <h1>Dates & Times</h1>
+                        {% csrf_token %} {{ form }}
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+ 
+</html>
+{% endblock %}

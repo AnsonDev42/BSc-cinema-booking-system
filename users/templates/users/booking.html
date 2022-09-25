@@ -1,0 +1,14 @@
+{% if user.is_authenticated %} {{ user }}
+<ol>
+    {% for o in order %}
+    <li>
+        {{ o }} - {{ o.date_created }}
+        <ul>
+            {% for ticket in o.tickets.all %}
+            <li>{{ ticket.showtime }}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </li>
+</ol>
+{% endif %}
